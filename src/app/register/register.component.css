@@ -1,0 +1,36 @@
+.margin-input {
+    margin-right: 20px;
+}
+
+.margin-extends-input {
+    width: 380px;
+}
+
+.mat-form-field {
+    font-weight: 100;
+}
+
+#app {
+    /* text-align: center; */
+    color: #2c3e50;
+    margin-top: 60px;
+}
+#video {
+    background-color: #000000;
+    margin-top: -57px;
+}
+#canvas {
+    display: none;
+}
+li {
+    display: inline;
+    padding: 5px;
+}
+
+.example-card {
+    max-width: 540px;
+}
+  
+.example-header-image {
+    background-size: cover;
+}
