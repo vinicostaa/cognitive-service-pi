@@ -1,0 +1,1 @@
+export const MEAT_API = "localhost:8080";

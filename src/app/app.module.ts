@@ -10,15 +10,18 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatAutocompleteModule, MatInputModule, MatStepperModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatDialogModule, MatAutocompleteModule, MatInputModule, MatStepperModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatSnackBarModule } from '@angular/material';
 import { DetectComponent } from './detect/detect.component';
 import { RegisterComponent } from './register/register.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
+import { CameraComponent } from './camera/camera.component';
+import { CameraService } from './camera/camera.service';
 
 const appRoutes: Routes = [
+  { path: '', component: DetectComponent },
   { path: 'detect', component: DetectComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'list-clients', component:  ListClientsComponent }
+  { path: 'list-clients', component: ListClientsComponent }
 ]
 
 @NgModule({
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     MyNavComponent,
     DetectComponent,
     RegisterComponent,
-    ListClientsComponent
+    ListClientsComponent,
+    CameraComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +50,16 @@ const appRoutes: Routes = [
     MatStepperModule,
     MatAutocompleteModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  entryComponents: [
+    CameraComponent
+  ],
+  providers: [
+    CameraService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
