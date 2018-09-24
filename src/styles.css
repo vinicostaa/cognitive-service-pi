@@ -11,3 +11,15 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 .mat-simple-snackbar-action {
     color: #ffffff;
 }
+
+.spinner_container {
+    border-radius: 10px;
+    height: 70px;
+    left: 40%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    z-index: 3;
+    /* opacity: 0.5; */
+}

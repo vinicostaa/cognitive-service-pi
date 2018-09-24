@@ -10,7 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatDialogModule, MatAutocompleteModule, MatInputModule, MatStepperModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatSnackBarModule } from '@angular/material';
+import { MatGridListModule, MatProgressSpinnerModule, MatDialogModule, MatAutocompleteModule, MatInputModule, MatStepperModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatSnackBarModule } from '@angular/material';
 import { DetectComponent } from './detect/detect.component';
 import { RegisterComponent } from './register/register.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
@@ -52,7 +52,9 @@ const appRoutes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatGridListModule
   ],
   entryComponents: [
     CameraComponent

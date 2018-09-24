@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '../../../node_modules/@angular/material';
 import { CameraService } from './camera.service';
-import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'cog-camera',
@@ -42,11 +41,10 @@ export class CameraComponent implements OnInit {
 
   public capture() {
     debugger;
-    
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
     this.cameraService.addPhoto(this.canvas.nativeElement.toDataURL("image/png"));
     this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    this.openSnackBar("Foto adicionada", "Fechar");
+    this.openSnackBar("Foto Capturada", "Fechar");
     this.dialog.closeAll();
   }
 
