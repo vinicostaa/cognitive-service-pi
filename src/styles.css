@@ -23,3 +23,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     z-index: 3;
     /* opacity: 0.5; */
 }
+
+.mat-dialog-container {
+    padding: 1px !important;
+}

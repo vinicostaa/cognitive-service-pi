@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
 import { CameraComponent } from './camera/camera.component';
 import { CameraService } from './camera/camera.service';
+import { DetailComponent } from './detect/detail/detail.component';
 
 const appRoutes: Routes = [
   { path: '', component: DetectComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     DetectComponent,
     RegisterComponent,
     ListClientsComponent,
-    CameraComponent
+    CameraComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ const appRoutes: Routes = [
     MatGridListModule
   ],
   entryComponents: [
-    CameraComponent
+    CameraComponent,
+    DetailComponent
   ],
   providers: [
     CameraService

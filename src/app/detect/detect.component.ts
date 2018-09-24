@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { CameraComponent } from '../camera/camera.component';
 import { CameraService } from '../camera/camera.service';
+import { DetailComponent } from './detail/detail.component';
 
 @Component({
   selector: 'cog-detect',
@@ -21,6 +22,19 @@ export class DetectComponent implements OnInit {
       this.cameraService.contextDetect = this.cameraService.context;
       // chamar serviço para detectar 
       this.isLoading = true;
+    });
+  }
+
+  openDialogDetail() {
+    const dialogRef = this.dialog.open(DetailComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      debugger;
+      this.cameraService.contextDetect = this.cameraService.context;
+      if(this.cameraService.contextDetect){
+        // chamar serviço para detectar 
+        this.isLoading = true;
+      }
     });
   }
 
