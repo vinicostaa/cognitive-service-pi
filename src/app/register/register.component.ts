@@ -4,6 +4,8 @@ import {MatDialog, MatSnackBar} from '@angular/material';
 import { CameraComponent } from '../camera/camera.component';
 import { Client } from '../model/client';
 import { CameraService } from '../camera/camera.service';
+import { RegisterService } from './register.service';
+import { DialogResultComponent } from '../dialog-result/dialog-result.component';
 
 @Component({
   selector: 'cog-register',
@@ -13,7 +15,7 @@ import { CameraService } from '../camera/camera.service';
 export class RegisterComponent implements OnInit {
   
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private cameraService: CameraService, public snackBar: MatSnackBar) {
+    private cameraService: CameraService, private registerService: RegisterService, public snackBar: MatSnackBar) {
   }
 
   isLinear = true;
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      nome: ['', [Validators.required, Validators.minLength(2)]],
       rg: ['', Validators.required,],
       cpf: ['', [Validators.required, Validators.pattern(this.cpfPattern)]],
       telefone: ['', Validators.pattern(this.numberPattern)],
@@ -52,6 +54,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  openDialogResult() {
+    const dialogRef = this.dialog.open(DialogResultComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      //redirect
+    });
+  }
+
   public proxPhoto() {
     if(!this.cameraService.context) {
       this.openSnackBar("Adicione a foto para Prosseguir", "Fechar");
@@ -70,11 +80,12 @@ export class RegisterComponent implements OnInit {
     return event.target.value;
   }
 
-  checkRegister(form: Client) {
-    console.log(form)
-    console.log(this.cameraService.contextAdd);
+  checkRegister(client: Client) {
     this.isLoading = true;
-
+    this.registerService.checkRegister(client).subscribe(client => 
+      this.registerService.client = client );
+    this.isLoading = false;
+    this.openDialogResult();
   }
 
 }

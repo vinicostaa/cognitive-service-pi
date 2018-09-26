@@ -5,7 +5,7 @@
     <form [formGroup]="registerForm">
       <ng-template matStepLabel>Contato</ng-template>
       <mat-form-field class="margin-extends-input">
-        <input matInput placeholder="Nome Completo" formControlName="name" required>
+        <input matInput placeholder="Nome Completo" formControlName="nome" required>
       </mat-form-field>
       <br>
       <mat-form-field class="margin-input">
@@ -32,7 +32,7 @@
       <ng-template matStepLabel>Face</ng-template>
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{registerForm.value.name}}</mat-card-title>
+          <mat-card-title>{{registerForm.value.nome}}</mat-card-title>
           <mat-card-subtitle>data de nascimento</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>

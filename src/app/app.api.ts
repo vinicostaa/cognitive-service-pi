@@ -1,1 +1,1 @@
-export const MEAT_API = "localhost:8080";
+export const MEAT_API = "http://localhost:8080/cognitive-services-usjt";

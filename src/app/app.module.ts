@@ -17,6 +17,9 @@ import { ListClientsComponent } from './list-clients/list-clients.component';
 import { CameraComponent } from './camera/camera.component';
 import { CameraService } from './camera/camera.service';
 import { DetailComponent } from './detect/detail/detail.component';
+import { RegisterService } from './register/register.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DialogResultComponent } from './dialog-result/dialog-result.component';
 
 const appRoutes: Routes = [
   { path: '', component: DetectComponent },
@@ -34,12 +37,14 @@ const appRoutes: Routes = [
     RegisterComponent,
     ListClientsComponent,
     CameraComponent,
-    DetailComponent
+    DetailComponent,
+    DialogResultComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     LayoutModule,
@@ -60,10 +65,12 @@ const appRoutes: Routes = [
   ],
   entryComponents: [
     CameraComponent,
-    DetailComponent
+    DetailComponent,
+    DialogResultComponent
   ],
   providers: [
-    CameraService
+    CameraService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
