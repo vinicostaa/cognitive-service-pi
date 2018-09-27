@@ -1,7 +1,7 @@
 export interface  Client {
     nome: string,
     rg: string,
-    cpf: number,
-    telefone: number,
+    cpf: string,
+    telefone: string,
     email: string
 }

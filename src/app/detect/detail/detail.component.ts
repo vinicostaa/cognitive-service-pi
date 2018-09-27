@@ -14,7 +14,6 @@ export class DetailComponent implements OnInit {
   }
 
   closeDialog(){
-    debugger;
     this.dialog.closeAll();
   }
 

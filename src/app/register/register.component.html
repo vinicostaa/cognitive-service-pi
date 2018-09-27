@@ -9,14 +9,14 @@
       </mat-form-field>
       <br>
       <mat-form-field class="margin-input">
-        <input matInput placeholder="RG" (keyup)="RgRegex($event)" formControlName="rg" required>
+        <input matInput placeholder="RG"  maxlength="14" (keyup)="RgRegex($event)" formControlName="rg" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="CPF" (keyup)="cpfRegex($event)" formControlName="cpf" required>
+        <input matInput placeholder="CPF" maxlength="11" (keyup)="cpfRegex($event)" formControlName="cpf" required>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Telefone" formControlName="telefone" required>
+        <input matInput placeholder="Telefone" maxlength="15" (keyup)="maskTelefone($event)" formControlName="telefone" required>
       </mat-form-field>
       <br>
       <mat-form-field>

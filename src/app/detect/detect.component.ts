@@ -29,7 +29,6 @@ export class DetectComponent implements OnInit {
     const dialogRef = this.dialog.open(DetailComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger;
       this.cameraService.contextDetect = this.cameraService.context;
       if(this.cameraService.contextDetect){
         // chamar serviço para detectar 

@@ -8,7 +8,6 @@ export class CameraService {
     public contextDetect: string;
 
     addPhoto(context: string){
-        debugger;
         this.context = context;
         console.log(this.context);
     }
