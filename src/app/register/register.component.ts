@@ -115,11 +115,12 @@ export class RegisterComponent implements OnInit {
   }
 
   async checkRegister(client: Client) {
-    debugger
+    
     this.isLoading = true;
     this.face = {
       persistedFaceId: "",
-      base64image: this.cameraService.contextAdd
+      base64image: this.cameraService.contextAdd,
+      client: null
     }
     client.faces = [];
     client.faces.push(this.face);

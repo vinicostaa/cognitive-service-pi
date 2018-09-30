@@ -10,7 +10,7 @@
       <mat-card-title><b>{{client.nome}}</b></mat-card-title>
       <mat-card-subtitle *ngFor="let face of client.face" >Confiança: {{face.confidence | percent: '1.2-2' }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="assets/img/faces/{{client.cpf}}.jpg">
+    <img mat-card-image *ngFor="let face of client.face" src="{{face.base64image}}">
     <mat-card-content>
       CPF <br>{{client.cpf}}
     </mat-card-content>
