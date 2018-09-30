@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { MEAT_API } from "../app.api";
 import { Client } from '../model/client';
+import { Face } from '../model/Face';
 
 
 const httpOptions = {
@@ -14,12 +15,11 @@ const httpOptions = {
 
 
 @Injectable()
-export class RegisterService {
+export class ApiService {
     constructor(private http: HttpClient) { }
+    
+  
 
-    client:Client;
-
-    /** POST: add a new hero to the database */
     async checkRegister(client: Client): Promise<Client> {
         debugger
         try {
@@ -29,4 +29,17 @@ export class RegisterService {
             return null;
         }
     }
+
+    async checkDetect(face: Face): Promise<Client[]> {
+        debugger
+        try {
+            const response = await this.http.post<Client[]>(`${MEAT_API}/client/detect`, face, httpOptions).toPromise();
+            return response;
+        } catch {
+            return null;
+        }
+    }
+
+
+
 }

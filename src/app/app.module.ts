@@ -15,9 +15,9 @@ import { DetectComponent } from './detect/detect.component';
 import { RegisterComponent } from './register/register.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
 import { CameraComponent } from './camera/camera.component';
-import { CameraService } from './camera/camera.service';
+import { CameraService } from './services/camera.service';
 import { DetailComponent } from './detect/detail/detail.component';
-import { RegisterService } from './register/register.service';
+import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogResultComponent } from './dialog-result/dialog-result.component';
 
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     CameraService,
-    RegisterService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar, MatDialogConfig } from '@angular/material';
 import { CameraComponent } from '../camera/camera.component';
 import { Client } from '../model/client';
-import { CameraService } from '../camera/camera.service';
-import { RegisterService } from './register.service';
+import { CameraService } from '../services/camera.service';
+import { ApiService } from '../services/api.service';
 import { DialogResultComponent } from '../dialog-result/dialog-result.component';
 import { Router } from '@angular/router';
+import { Face } from '../model/Face';
 
 @Component({
   selector: 'cog-register',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private cameraService: CameraService, private registerService: RegisterService, public snackBar: MatSnackBar) {
+    private cameraService: CameraService, private apiService: ApiService, public snackBar: MatSnackBar) {
   }
 
   isLinear = true;
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   cpfPattern = /^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/
   isLoading: boolean = false;
+  face: Face;
 
   ngOnInit() {
     this.registerForm = this._formBuilder.group({
@@ -115,7 +117,13 @@ export class RegisterComponent implements OnInit {
   async checkRegister(client: Client) {
     debugger
     this.isLoading = true;
-    const result = await this.registerService.checkRegister(client);
+    this.face = {
+      persistedFaceId: "",
+      base64image: this.cameraService.contextAdd
+    }
+    client.faces = [];
+    client.faces.push(this.face);
+    const result = await this.apiService.checkRegister(client);
     this.isLoading = false;
 
     if (result) {

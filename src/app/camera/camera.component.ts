@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '../../../node_modules/@angular/material';
-import { CameraService } from './camera.service';
+import { CameraService } from '../services/camera.service';
 
 @Component({
   selector: 'cog-camera',

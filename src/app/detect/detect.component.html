@@ -3,116 +3,19 @@
 </div>
 <mat-card class="title-card"><button mat-stroked-button color="primary" (click)="openDialog()">Detectar Face </button></mat-card>
 
-<div (click)="openDialogDetail()" style="display: inline-block; cursor: pointer; ">
+<div *ngFor="let client of clients"
+ (click)="openDialogDetail()" style="display: inline-block; cursor: pointer; ">
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-      <mat-card-subtitle>22/09/2018</mat-card-subtitle>
+      <mat-card-title><b>{{client.nome}}</b></mat-card-title>
+      <mat-card-subtitle *ngFor="let face of client.face" >Confiança: {{face.confidence | percent: '1.2-2' }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="assets/img/faces/{{client.cpf}}.jpg">
     <mat-card-content>
-      CPF <br>482.569.789-89
+      CPF <br>{{client.cpf}}
     </mat-card-content>
     <mat-card-actions>
       <!-- <button mat-button>Selecionar</button> -->
     </mat-card-actions>
   </mat-card>
 </div>
-<div style="display: inline-block;">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-      <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      CPF <br>482.569.789-89
-    </mat-card-content>
-    <mat-card-actions>
-      <!-- <button mat-button>Selecionar</button> -->
-    </mat-card-actions>
-  </mat-card>
-</div>
-<div style="display: inline-block;">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-      <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      CPF <br>482.569.789-89
-    </mat-card-content>
-    <mat-card-actions>
-      <!-- <button mat-button (click)="openDialogDetail()">Selecionar</button> -->
-    </mat-card-actions>
-  </mat-card>
-</div>
-
-
-<!-- <mat-grid-list cols="4" rowHeight="1:2">
-  <div>
-    <mat-grid-tile>
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-              <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              CPF <br>482.569.789-89
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Selecionar</button>
-            </mat-card-actions>
-          </mat-card>
-    </mat-grid-tile>
-  </div>
-  <div>
-    <mat-grid-tile>
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-              <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              CPF <br>482.569.789-89
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Selecionar</button>
-            </mat-card-actions>
-          </mat-card>
-    </mat-grid-tile>
-  </div>
-    <mat-grid-tile>
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-              <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              CPF <br>482.569.789-89
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Selecionar</button>
-            </mat-card-actions>
-          </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title><b>Mariana Lopes</b></mat-card-title>
-              <mat-card-subtitle>22/09/2018</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://i.dailymail.co.uk/i/pix/2007/08_02/womanfaceDM1308_468x361.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              CPF <br>482.569.789-89
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Selecionar</button>
-            </mat-card-actions>
-          </mat-card>
-    </mat-grid-tile>
-</mat-grid-list> -->
