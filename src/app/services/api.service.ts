@@ -40,6 +40,14 @@ export class ApiService {
         }
     }
 
-
+    async listClients(): Promise<Client[]> {
+        debugger
+        try {
+            const response = await this.http.get<Client[]>(`${MEAT_API}/client/list`, httpOptions).toPromise();
+            return response;
+        } catch {
+            return null;
+        }
+    }
 
 }
