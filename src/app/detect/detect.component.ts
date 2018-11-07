@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CameraComponent } from '../camera/camera.component';
 import { CameraService } from '../services/camera.service';
 import { DetailComponent } from './detail/detail.component';
 import { ApiService } from '../services/api.service';
 import { Face } from '../model/Face';
 import { Client } from '../model/client';
+import { DialogResultComponent } from '../dialog-result/dialog-result.component';
 
 @Component({
   selector: 'cog-detect',
@@ -23,24 +24,45 @@ export class DetectComponent implements OnInit {
   clients: Client[] = [];
 
   openDialog() {
-    const dialogRef = this.dialog.open(CameraComponent);
+    const dialogConfigCamera = new MatDialogConfig();
+    dialogConfigCamera.data = {
+      isCameraDetect: true
+    }; 
+
+    const dialogRef = this.dialog.open(CameraComponent, dialogConfigCamera);
 
     dialogRef.afterClosed().subscribe(async result => {
-      debugger
       this.isLoading = true;
-      this.cameraService.contextDetect = this.cameraService.context;
+      this.cameraService.contextDetect = this.cameraService.context[0];
       if (this.cameraService.contextDetect) {
         // chamar serviço para detectar 
         this.face = {
-          base64image: this.cameraService.contextDetect,
+          base64image: this.cameraService.context,
           persistedFaceId: '',
           client: null
-        }
+        };
         this.clients = await this.apiService.checkDetect(this.face);
         this.cameraService.contextDetect = undefined;
-       
       }
       this.isLoading = false;
+
+      const dialogConfig = new MatDialogConfig();
+      if (this.clients != null) {
+        dialogConfig.data = {
+          sucess: true,
+          title: "Usuário encontrado",
+          msg: "Usuário encontrado em nossa base de dados",
+          icon: "done"
+        };
+      } else {
+        dialogConfig.data = {
+          sucess: false,
+          title: "Usuário não encontrado",
+          msg: "Usuário não encontrado em nossa base de dados",
+          icon: "highlight_off"
+        };
+      }
+      const dialogSucess = this.dialog.open(DialogResultComponent, dialogConfig);
     });
   }
 

@@ -1,1 +1,1 @@
-export const MEAT_API = "http://localhost:8080/cognitive-services-usjt";
+export const JAVA_API_AZURE = "http://localhost:8080/cognitive-services-usjt";

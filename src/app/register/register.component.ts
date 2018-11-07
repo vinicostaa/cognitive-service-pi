@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private cameraService: CameraService, private apiService: ApiService, public snackBar: MatSnackBar) {
   }
 
-  isLinear = true;
+  isLinear = false;
   registerForm: FormGroup;
   secondFormGroup: FormGroup;
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -48,10 +48,14 @@ export class RegisterComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CameraComponent);
+    const dialogConfigCamera = new MatDialogConfig();
+    dialogConfigCamera.data = {
+      isCameraDetect: false
+    }; 
+    const dialogRef = this.dialog.open(CameraComponent, dialogConfigCamera);
     dialogRef.afterClosed().subscribe(result => {
       this.cameraService.contextAdd = this.cameraService.context;
-      this.secondFormGroup.controls['secondCtrl'].setValue(this.cameraService.context.substring(0, 10));
+      this.secondFormGroup.controls['secondCtrl'].setValue(this.cameraService.context[0].substring(0, 10));
     });
   }
 
@@ -60,9 +64,9 @@ export class RegisterComponent implements OnInit {
     if (isSucess) {
       dialogConfig.data = {
         sucess: true,
-        title: "Cadastro Realizado com sucesso",
-        msg: "Agora você já pode detectar o cliente cadastrado!",
-        icon: "done"
+        title: 'Cadastro Realizado com sucesso',
+        msg: 'Agora você já pode detectar o cliente cadastrado!',
+        icon: 'done'
       };
     } else {
       dialogConfig.data = {
@@ -124,6 +128,8 @@ export class RegisterComponent implements OnInit {
     }
     client.faces = [];
     client.faces.push(this.face);
+
+    console.log(client);
     const result = await this.apiService.checkRegister(client);
     this.isLoading = false;
 

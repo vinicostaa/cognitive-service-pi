@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
-import { MatDialog, MatSnackBar } from '../../../node_modules/@angular/material';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Inject } from '@angular/core';
+import { MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '../../../node_modules/@angular/material';
 import { CameraService } from '../services/camera.service';
 
 @Component({
@@ -17,9 +17,16 @@ export class CameraComponent implements OnInit {
 
   public captures: Array<any>;
 
-  constructor(public dialog: MatDialog, private cameraService: CameraService, public snackBar: MatSnackBar) { 
+  constructor(public dialog: MatDialog, 
+    private cameraService: CameraService, public snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<CameraComponent>, 
+    @Inject(MAT_DIALOG_DATA) data) {
+    
     this.captures = [];
+    this.isCameraDetect = data.isCameraDetect;
   }
+
+  isCameraDetect = false;
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
@@ -44,7 +51,13 @@ export class CameraComponent implements OnInit {
     this.cameraService.addPhoto(this.canvas.nativeElement.toDataURL("image/png"));
     this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
     this.openSnackBar("Foto Capturada", "Fechar");
-    this.dialog.closeAll();
+    if (this.cameraService.context.length === 4) {
+      this.openSnackBar("4 Fotos Capturada com sucesso", "Fechar");
+      this.dialog.closeAll();
+    }
+    if(this.isCameraDetect) {
+      this.dialog.closeAll();
+    }
   }
 
 }

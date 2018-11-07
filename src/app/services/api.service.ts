@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { MEAT_API } from "../app.api";
+import { JAVA_API_AZURE } from "../app.api";
 import { Client } from '../model/client';
 import { Face } from '../model/Face';
 
@@ -21,9 +21,9 @@ export class ApiService {
   
 
     async checkRegister(client: Client): Promise<Client> {
-        debugger
+    
         try {
-            const response = await this.http.post<Client>(`${MEAT_API}/client/add`, client, httpOptions).toPromise();
+            const response = await this.http.post<Client>(`${JAVA_API_AZURE}/client/add`, client, httpOptions).toPromise();
             return response;
         } catch {
             return null;
@@ -31,9 +31,9 @@ export class ApiService {
     }
 
     async checkDetect(face: Face): Promise<Client[]> {
-        debugger
+        
         try {
-            const response = await this.http.post<Client[]>(`${MEAT_API}/client/detect`, face, httpOptions).toPromise();
+            const response = await this.http.post<Client[]>(`${JAVA_API_AZURE}/client/detect`, face, httpOptions).toPromise();
             return response;
         } catch {
             return null;
@@ -41,9 +41,9 @@ export class ApiService {
     }
 
     async listClients(): Promise<Client[]> {
-        debugger
+        
         try {
-            const response = await this.http.get<Client[]>(`${MEAT_API}/client/list`, httpOptions).toPromise();
+            const response = await this.http.get<Client[]>(`${JAVA_API_AZURE}/client/list`, httpOptions).toPromise();
             return response;
         } catch {
             return null;

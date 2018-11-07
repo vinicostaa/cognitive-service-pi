@@ -1,5 +1,6 @@
-
-<div class="spinner_container" *ngIf="isLoading"><mat-spinner></mat-spinner></div>
+<div class="spinner_container" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="registerForm">
     <form [formGroup]="registerForm">
@@ -9,14 +10,15 @@
       </mat-form-field>
       <br>
       <mat-form-field class="margin-input">
-        <input matInput placeholder="RG"  maxlength="14" (keyup)="RgRegex($event)" formControlName="rg" required>
+        <input matInput placeholder="RG" maxlength="14" (keyup)="RgRegex($event)" formControlName="rg" required>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="CPF" maxlength="11" (keyup)="cpfRegex($event)" formControlName="cpf" required>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Telefone" maxlength="15" (keyup)="maskTelefone($event)" formControlName="telefone" required>
+        <input matInput placeholder="Telefone" maxlength="15" (keyup)="maskTelefone($event)" formControlName="telefone"
+          required>
       </mat-form-field>
       <br>
       <mat-form-field>
@@ -33,12 +35,13 @@
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{registerForm.value.nome}}</mat-card-title>
-          <mat-card-subtitle>data de nascimento</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <img *ngIf="cameraService.context" src="{{ cameraService.context }}" height="444" width="540"/>
-            <button mat-raised-button color="primary" (click)="openDialog()">Tirar Foto</button>
-          <mat-form-field *ngIf="false" >
+          <span *ngFor="let context of cameraService.context">
+            <img src="{{ context }}" height="200" width="250" />
+          </span>
+          <button mat-raised-button color="primary" (click)="openDialog()">Tirar Foto</button>
+          <mat-form-field *ngIf="false">
             <input matInput placeholder="Address" formControlName="secondCtrl" required>
           </mat-form-field>
         </mat-card-content>

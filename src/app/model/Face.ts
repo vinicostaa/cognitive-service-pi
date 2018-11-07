@@ -4,9 +4,9 @@ import { Cantidate } from "./cantidate";
 export class Face {
     constructor (
     public persistedFaceId: string,
-    public base64image: string,
+    public base64image: string[] = [],
     public client: Client,
-    public cantidates: Cantidate[] = []
+    public cantidates?: Cantidate[]
     ) {}
 
 }
