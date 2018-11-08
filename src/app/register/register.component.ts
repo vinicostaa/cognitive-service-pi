@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private cameraService: CameraService, private apiService: ApiService, public snackBar: MatSnackBar) {
   }
 
-  isLinear = false;
+  isLinear = true;
   registerForm: FormGroup;
   secondFormGroup: FormGroup;
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i

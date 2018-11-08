@@ -4,7 +4,7 @@
 <div *ngFor="let client of clients; let i = index" [attr.data-index]="i" style="display: inline-block; cursor: pointer; ">
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title><b>{{client.nome}}</b></mat-card-title>
+      
     </mat-card-header>
     <span *ngFor="let face of client.face">
       <div id="{{i}}" class="carousel slide" data-ride="carousel">
@@ -30,9 +30,11 @@
 
     </span>
     <mat-card-content>
-      CPF: {{client.cpf}}<br>
-      RG: {{client.rg}}<br>
-      Telefone: {{client.telefone}}
+        <br>
+        <b>{{client.nome}}</b><br>
+        <b>CPF:</b> {{client.cpf}}<br>
+        <b>RG:</b> {{client.rg}}<br>
+        <b>Telefone:</b> {{client.telefone}}
     </mat-card-content>
   </mat-card>
 </div>

@@ -8,8 +8,7 @@
   style="display: inline-block; cursor: pointer; ">
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title><b>{{client.nome}}</b></mat-card-title>
-      <mat-card-subtitle *ngFor="let face of client.face">Confiança: {{face.cantidates[0].confidence | percent: '1.2-2'
+      <mat-card-subtitle *ngFor="let face of client.face"><b>Confiança:</b> {{face.cantidates[0].confidence | percent: '1.2-2'
         }}</mat-card-subtitle>
     </mat-card-header>
     <span *ngFor="let face of client.face">
@@ -37,9 +36,11 @@
 
     </span>
     <mat-card-content>
-      CPF: {{client.cpf}}<br>
-      RG: {{client.rg}}<br>
-      Telefone: {{client.telefone}}
+      <br>
+      <b>{{client.nome}}</b><br>
+      <b>CPF:</b> {{client.cpf}}<br>
+      <b>RG:</b> {{client.rg}}<br>
+      <b>Telefone:</b> {{client.telefone}}
     </mat-card-content>
     <mat-card-actions>
       <!-- <button mat-button>Selecionar</button> -->
