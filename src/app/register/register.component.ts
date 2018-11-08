@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
     dialogConfigCamera.data = {
       isCameraDetect: false
     }; 
+    this.cameraService.context = [];
     const dialogRef = this.dialog.open(CameraComponent, dialogConfigCamera);
     dialogRef.afterClosed().subscribe(result => {
       this.cameraService.contextAdd = this.cameraService.context;
@@ -66,14 +67,16 @@ export class RegisterComponent implements OnInit {
         sucess: true,
         title: 'Cadastro Realizado com sucesso',
         msg: 'Agora você já pode detectar o cliente cadastrado!',
-        icon: 'done'
+        icon: 'done',
+        screen: 'register'
       };
     } else {
       dialogConfig.data = {
         sucess: false,
         title: "Opss, Ocorreu um erro",
-        msg: "Não foi possível realizar o cadastro!",
-        icon: "highlight_off"
+        msg: "Não foi possível realizar o cadastro do cliente",
+        icon: "highlight_off",
+        screen: 'register'
       };
     }
 

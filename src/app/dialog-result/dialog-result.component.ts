@@ -14,12 +14,14 @@ export class DialogResultComponent implements OnInit {
       this.msg = data.msg;
       this.title = data.title; 
       this.icon = data.icon;
+      this.screen = data.screen;
     } 
 
   title: string;
   msg: string;
   isSucess: boolean;
   icon: string;
+  screen: string;
 
   ngOnInit() {
   

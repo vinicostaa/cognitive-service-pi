@@ -6,6 +6,6 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button (click)="onCloseConfirm()">Ok</button>&nbsp;
+    <button mat-raised-button [ngClass]="(screen=='register')?'button-register':'button-detect'" (click)="onCloseConfirm()">Ok</button>&nbsp;
   </mat-dialog-actions>
 </div>

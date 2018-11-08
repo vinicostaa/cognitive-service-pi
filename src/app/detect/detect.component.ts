@@ -43,6 +43,7 @@ export class DetectComponent implements OnInit {
         };
         this.clients = await this.apiService.checkDetect(this.face);
         this.cameraService.contextDetect = undefined;
+        this.cameraService.context = [];
       }
       this.isLoading = false;
 
@@ -52,14 +53,16 @@ export class DetectComponent implements OnInit {
           sucess: true,
           title: "Usuário encontrado",
           msg: "Usuário encontrado em nossa base de dados",
-          icon: "done"
+          icon: "done",
+          screen: 'detect'
         };
       } else {
         dialogConfig.data = {
           sucess: false,
           title: "Usuário não encontrado",
           msg: "Usuário não encontrado em nossa base de dados",
-          icon: "highlight_off"
+          icon: "highlight_off",
+          screen: 'detect'
         };
       }
       const dialogSucess = this.dialog.open(DialogResultComponent, dialogConfig);

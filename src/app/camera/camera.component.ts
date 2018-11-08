@@ -48,13 +48,18 @@ export class CameraComponent implements OnInit {
 
   public capture() {
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
+    
     this.cameraService.addPhoto(this.canvas.nativeElement.toDataURL("image/png"));
-    this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    this.openSnackBar("Foto Capturada", "Fechar");
-    if (this.cameraService.context.length === 4) {
+
+    debugger
+    if (this.cameraService.context.length >= 4) {
       this.openSnackBar("4 Fotos Capturada com sucesso", "Fechar");
       this.dialog.closeAll();
+    } else {
+      this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+      this.openSnackBar("Foto Capturada", "Fechar");
     }
+
     if(this.isCameraDetect) {
       this.dialog.closeAll();
     }

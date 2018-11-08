@@ -4,7 +4,8 @@
 <mat-card class="title-card"><button mat-stroked-button color="primary" (click)="openDialog()">Detectar Face </button></mat-card>
 
 
-<div *ngFor="let client of clients; let i = index" [attr.data-index]="i" style="display: inline-block; cursor: pointer; ">
+<div *ngFor="let client of clients; let i = index" [attr.data-index]="i" 
+  style="display: inline-block; cursor: pointer; ">
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title><b>{{client.nome}}</b></mat-card-title>
@@ -13,19 +14,14 @@
     </mat-card-header>
     <span *ngFor="let face of client.face">
       <div id="{{i}}" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <!-- <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol> -->
-
-        {{i}}
+    
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div [ngClass]="(i===0)?'item active':'item'" *ngFor="let base64image of face.base64image" >
-              <img src="{{base64image}}" alt="Los Angeles" style="width:100%;">
-            </div>
+          <div [ngClass]="(i===0)?'item active':'item'"
+           *ngFor="let base64image of face.base64image; let i = index"
+            [attr.data-index]="i">
+            <img src="{{base64image}}" alt="Los Angeles" style="width:100%;">
+          </div>
         </div>
 
         <!-- Left and right controls -->
