@@ -5,3 +5,13 @@
 .button-register {
     left: 100px;
 }
+
+.error {
+    color: #ef3e31; 
+    font-size:48px;
+}
+
+.sucess {
+    color: #3f51b5; 
+    font-size:48px;
+}
