@@ -48,7 +48,7 @@ export class DetectComponent implements OnInit {
       this.isLoading = false;
 
       const dialogConfig = new MatDialogConfig();
-      if (this.clients != null) {
+      if (this.clients.length > 0) {
         dialogConfig.data = {
           sucess: true,
           title: "Usuário encontrado",
